@@ -17,7 +17,4 @@ class EGVAR(medical,replacementItems) {
         {"ACE_tourniquet", 1},
         {"ACE_splint", 2}
     };
-    ACE_atropine[] = {
-        {"ACE_adenosine", 1}
-    };
 };

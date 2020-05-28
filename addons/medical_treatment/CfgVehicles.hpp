@@ -151,8 +151,8 @@ class CfgVehicles {
         };
     };
     class ACE_atropineItem: Item_Base_F {
-        scope = 1;
-        scopeCurator = 1;
+        scope = 2;
+        scopeCurator = 2;
         displayName = CSTRING(Atropine_Display);
         author = ECSTRING(common,ACETeam);
         vehicleClass = "Items";
@@ -168,6 +168,16 @@ class CfgVehicles {
         vehicleClass = "Items";
         class TransportItems {
             MACRO_ADDITEM(ACE_epinephrine,1);
+        };
+    };
+    class ACE_painkillersItem: Item_Base_F {
+        scope = 2;
+        scopeCurator = 2;
+        displayName = CSTRING(Painkillers_Display);
+        author = "Alganthe";
+        vehicleClass = "Items";
+        class TransportItems {
+            MACRO_ADDITEM(ACE_painkillers,1);
         };
     };
     class ACE_plasmaIVItem: Item_Base_F {
@@ -309,6 +319,7 @@ class CfgVehicles {
             MACRO_ADDITEM(ACE_splint,15);
             MACRO_ADDITEM(ACE_morphine,15);
             MACRO_ADDITEM(ACE_adenosine,15);
+            MACRO_ADDITEM(ACE_atropine,15);
             MACRO_ADDITEM(ACE_epinephrine,15);
             MACRO_ADDITEM(ACE_plasmaIV,7);
             MACRO_ADDITEM(ACE_plasmaIV_500,7);

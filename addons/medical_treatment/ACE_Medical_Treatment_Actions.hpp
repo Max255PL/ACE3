@@ -130,6 +130,13 @@ class GVAR(actions) {
         items[] = {"ACE_adenosine"};
         litter[] = {{"ACE_MedicalLitter_adenosine"}};
     };
+    class Atropine: Morphine {	
+        displayName = CSTRING(Inject_Atropine);	
+        displayNameProgress = CSTRING(Injecting_Atropine);	
+        condition = QGVAR(advancedMedication);	
+        items[] = {"ACE_atropine"};	
+        litter[] = {{"ACE_MedicalLitter_atropine"}};	
+    };
     class Epinephrine: Morphine {
         displayName = CSTRING(Inject_Epinephrine);
         displayNameProgress = CSTRING(Injecting_Epinephrine);
@@ -137,6 +144,15 @@ class GVAR(actions) {
         items[] = {"ACE_epinephrine"};
         treatmentLocations = QGVAR(locationEpinephrine);
         litter[] = {{"ACE_MedicalLitter_epinephrine"}};
+    };
+    class Painkillers: Morphine {
+        displayName = CSTRING(Administer_Painkillers);
+        displayNameProgress = CSTRING(Administering_Painkillers);
+        icon = QPATHTOEF(medical_gui,ui\painkillers.paa);
+        allowedSelections[] = {"head"};
+        items[] = {"ACE_painkillers"};
+        condition = "";
+        litter[] = {};
     };
 
     // - IV Bags --------------------------------------------------------------

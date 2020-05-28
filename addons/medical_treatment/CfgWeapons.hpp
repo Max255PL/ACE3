@@ -103,7 +103,7 @@ class CfgWeapons {
         };
     };
     class ACE_atropine: ACE_ItemCore {
-        scope = 1;
+        scope = 2;
         author = ECSTRING(common,ACETeam);
         displayName = CSTRING(Atropine_Display);
         picture = QPATHTOF(ui\atropine_ca.paa);
@@ -124,6 +124,18 @@ class CfgWeapons {
         descriptionUse = CSTRING(Epinephrine_Desc_Use);
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 1;
+        };
+    };
+    class ACE_painkillers: ACE_ItemCore {
+        scope = 2;
+        author = "Alganthe";
+        displayName = CSTRING(Painkillers_Display);
+        picture = QPATHTOF(ui\painkillers_ca.paa);
+        model = "\A3\Structures_F_EPA\Items\Medical\PainKillers_F.p3d";
+        descriptionShort = CSTRING(Morphine_Desc_Short);
+        descriptionUse = CSTRING(Morphine_Desc_Use);
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 0.1;
         };
     };
 
@@ -249,7 +261,7 @@ class CfgWeapons {
         descriptionShort = CSTRING(SurgicalKit_Desc_Short);
         descriptionUse = CSTRING(SurgicalKit_Desc_Use);
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 15;
+            mass = 5;
         };
     };
     class ACE_bodyBag: ACE_ItemCore {

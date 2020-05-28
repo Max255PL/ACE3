@@ -129,6 +129,7 @@ class ADDON {
             };
             class VelocityWoundMinor: VelocityWound {
                 effectiveness = 2;
+                reopeningChance = 0.5;
             };
             class VelocityWoundMedium: VelocityWound {
                 effectiveness = 1.5;
@@ -575,13 +576,13 @@ class ADDON {
 
         // specific details for the ACE_Morphine treatment action
         class Morphine {
-            painReduce = 0.8;
+            painReduce = 0.9;
             hrIncreaseLow[] = {-10, -20};
             hrIncreaseNormal[] = {-10, -30};
             hrIncreaseHigh[] = {-10, -35};
-            timeInSystem = 1800;
+            timeInSystem = 10800;
             timeTillMaxEffect = 30;
-            maxDose = 4;
+            maxDose = 2;
             incompatibleMedication[] = {};
             viscosityChange = -10;
         };
@@ -592,7 +593,7 @@ class ADDON {
             hrIncreaseHigh[] = {10, 40};
             timeInSystem = 120;
             timeTillMaxEffect = 10;
-            maxDose = 10;
+            maxDose = 6;
             incompatibleMedication[] = {};
         };
         class Adenosine {
@@ -605,13 +606,23 @@ class ADDON {
             maxDose = 6;
             incompatibleMedication[] = {};
         };
+        class Atropine {
+            painReduce = 0;
+            hrIncreaseLow[] = {30, 50};
+            hrIncreaseNormal[] = {25, 40};
+            hrIncreaseHigh[] = {20, 30};
+            timeInSystem = 1800;
+            timeTillMaxEffect = 20;
+            maxDose = 3;
+            incompatibleMedication[] = {};
+        };
         class PainKillers {
-            painReduce = 0.1;
-            timeInSystem = 600;
-            timeTillMaxEffect = 60;
+            painReduce = 0.35;
+            timeInSystem = 10800;
+            timeTillMaxEffect = 300;
             maxDose = 10;
             incompatibleMedication[] = {};
-            viscosityChange = 5;
+            viscosityChange = 3;
         };
     };
     class IV {
