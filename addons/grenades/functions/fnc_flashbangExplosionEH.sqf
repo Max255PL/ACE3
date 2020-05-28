@@ -43,7 +43,7 @@ if (hasInterface) then {
 
 // Affect local AI
 // @todo: Affect units in static weapons, turned out, etc
-private _affected = (ASLtoAGL _grenadePosASL) nearEntities ["CAManBase", 20];
+private _affected = (ASLtoAGL _grenadePosASL) nearEntities ["CAManBase", 25];
 _affected = _affected - [ACE_player];
 {
     if (local _x && {alive _x}) then {
@@ -104,12 +104,21 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
 
     // add ace_medical pain effect:
     if (isClass (configFile >> "CfgPatches" >> "ACE_Medical") && {_strength > 0.1}) then {
-        [ACE_player, _strength / 2] call EFUNC(medical,adjustPainLevel);
+    	if ((getNumber (configFile >> "CfgWeapons" >> (headgear ACE_player) >> "ace_hearing_protection")) < 1) then {
+        	[ACE_player, _strength / 2] call EFUNC(medical,adjustPainLevel);
+        };
     };
 
     // Effect on vision has a wider range, with a higher falloff
     _strength = 1 - (((_eyePos vectorDistance _grenadePosASL) min 25) / 25) ^ 0.4;
     _strength = _strength * _losCoefficient;
+
+    if ((getNumber (configFile >> "CfgGlasses" >> (goggles ACE_player) >> "ACE_Protection")) == 1) then {
+    	if ((getNumber (configFile >> "CfgWeapons" >> (headgear ACE_player) >> "ace_hearing_protection")) < 1) then {
+    		_strength = _strength * 0.1;
+	};
+    };
+
     // Account for people looking away by slightly reducing the effect for visual effects.
     private _eyeDir = ((AGLtoASL positionCameraToWorld [0,0,1]) vectorDiff (AGLtoASL positionCameraToWorld [0,0,0]));
     private _dirToUnitVector = _eyePos vectorFromTo _grenadePosASL;
@@ -141,7 +150,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // Make player flinch
-    if (_strength <= 0.2) exitWith {};
+    if (_strength <= 0.15) exitWith {};
     private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
     private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
     private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];
