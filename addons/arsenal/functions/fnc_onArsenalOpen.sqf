@@ -307,8 +307,7 @@ if (is3DEN) then {
         _ctrl ctrlCommit 0;
     } forEach [
         IDC_buttonFace,
-        IDC_buttonVoice,
-        IDC_buttonInsigna
+        IDC_buttonVoice
     ];
 };
 
