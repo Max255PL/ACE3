@@ -68,7 +68,7 @@ _affected = _affected - [ACE_player];
             };
 
             _unit setSkill (skill _unit * 50);
-        }, [_x], 7 * _strength] call CBA_fnc_waitAndExecute;
+        }, [_x], 10 * _strength] call CBA_fnc_waitAndExecute;
     };
 } count _affected;
 
@@ -114,9 +114,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     _strength = _strength * _losCoefficient;
 
     if ((getNumber (configFile >> "CfgGlasses" >> (goggles ACE_player) >> "ACE_Protection")) == 1) then {
-    	if ((getNumber (configFile >> "CfgWeapons" >> (headgear ACE_player) >> "ace_hearing_protection")) < 1) then {
-    		_strength = _strength * 0.1;
-	};
+    	_strength = _strength * 0.1;
     };
 
     // Account for people looking away by slightly reducing the effect for visual effects.
